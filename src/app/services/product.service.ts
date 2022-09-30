@@ -27,4 +27,14 @@ export class ProductService {
   searchProducts(keyword:string):Observable<Product[]>{
     return this.http.get<Product[]>(this.url + "/products?name_like="+keyword)
   }
+
+  select(product:Product):Observable<Product>{
+   product.selected = !product.selected;
+    return this.http.put<Product>(this.url + "/products/"+product.id, product)
+  }
+
+  delete(product:Product):Observable<void>{
+    return this.http.delete<void>(this.url + "/products/"+product.id)
+  }
+
 }
