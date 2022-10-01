@@ -5,7 +5,7 @@
       "name": "Computer",
       "price": 4300,
       "quantity": 600,
-      "selected": false,
+      "selected": true,
       "available": true
     },
     {
@@ -13,7 +13,7 @@
       "name": "Printer",
       "price": 300,
       "quantity": 100,
-      "selected": true,
+      "selected": false,
       "available": true
     },
     {
@@ -21,13 +21,13 @@
       "name": "SmartPhone nouvau s3",
       "price": "12000",
       "quantity": "1",
-      "selected": true,
+      "selected": false,
       "available": false
     },
     {
       "id": 4,
       "name": "Lenovo I9",
-      "price": "8001",
+      "price": "800122",
       "quantity": "156",
       "selected": false,
       "available": true
