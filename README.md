@@ -10,8 +10,8 @@
 
 
 
-## Décomposition
+## Décomposition with Service
 
 ### @Output()
 
-![decomposition](/images/decomposition.jpg)
+![decomposition](/images/decompositionWithService.jpg)
