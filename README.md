@@ -10,6 +10,8 @@
 
 
 
-## Ecran
+## Décomposition
 
-![globale](/images/ecran.gif)
+### @Output()
+
+![decomposition](/images/decomposition.jpg)
