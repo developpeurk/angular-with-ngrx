@@ -29,7 +29,7 @@
       "name": "Lenovo I9",
       "price": "800122",
       "quantity": "156",
-      "selected": false,
+      "selected": true,
       "available": true
     }
   ]

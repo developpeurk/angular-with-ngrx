@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from "../../../../model/product/product.model";
 import {ActionEvent, ProductActionsTypes} from "../../../../state/product.state";
+import {EventDrivenService} from "../../../../services/event.driven.service";
 
 @Component({
   selector: 'app-product-item',
@@ -9,23 +10,20 @@ import {ActionEvent, ProductActionsTypes} from "../../../../state/product.state"
 })
 export class ProductItemComponent implements OnInit {
   @Input() public productInput!:Product
-  @Output() public productEventEmitter:EventEmitter<ActionEvent>=new EventEmitter<ActionEvent>();
-  constructor() { }
+  constructor(private eventDrivenService:EventDrivenService) { }
 
   ngOnInit(): void {
   }
 
   onSelect(product: Product) {
-     this.productEventEmitter.emit({type: ProductActionsTypes.SELECT_PRODUCT, payload: product})
+    this.eventDrivenService.publishEvent({type: ProductActionsTypes.SELECT_PRODUCT, payload: product})
   }
 
   onEdit(product: Product) {
-    this.productEventEmitter.emit({type: ProductActionsTypes.EDIT_PRODUCT, payload: product})
-
+    this.eventDrivenService.publishEvent({type: ProductActionsTypes.EDIT_PRODUCT, payload: product})
   }
 
   onDelete(product: Product) {
-    this.productEventEmitter.emit({type: ProductActionsTypes.DELETE_PRODUCT, payload: product})
-
+    this.eventDrivenService.publishEvent({type: ProductActionsTypes.DELETE_PRODUCT, payload: product})
   }
 }

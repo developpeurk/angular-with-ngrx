@@ -12,6 +12,4 @@
 
 ## Décomposition with Service
 
-### @Output()
-
 ![decomposition](/images/decompositionWithService.jpg)

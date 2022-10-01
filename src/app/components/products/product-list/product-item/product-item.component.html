@@ -4,8 +4,8 @@
   <td>{{ productInput.name}}</td>
   <td>{{ productInput.price }}</td>
   <td>{{ productInput.quantity}}</td>
-  <td>{{ productInput.selected}}</td>
-  <td>{{ productInput.available }}</td>
+  <td><span class="fa text-danger"  [ngClass]="productInput.selected? 'fa-heart': 'fa-square-o'"></span></td>
+  <td><span class="fa text-success" [ngClass]="productInput.available? 'fa-check-square-o': 'fa-square-o'"></span></td>
   <td>
     <button (click)="onSelect(productInput)" [ngClass]="productInput.selected ? 'btn btn-sm btn-success': 'btn btn-sm btn-danger'">
       <span *ngIf="productInput.selected">Unselected</span>

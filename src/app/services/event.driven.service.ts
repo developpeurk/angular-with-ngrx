@@ -3,9 +3,10 @@ import {Subject} from "rxjs";
 import {ActionEvent} from "../state/product.state";
 
 @Injectable({providedIn:'root'})
-export class EventDriverService{
+export class EventDrivenService{
   private sourceEventSubject: Subject<ActionEvent>=new Subject<ActionEvent>();
-  private sourceSubjectObservable=this.sourceEventSubject.asObservable()
+  public sourceSubjectObservable=this.sourceEventSubject.asObservable()
+
   constructor() {
   }
 
