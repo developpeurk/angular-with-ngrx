@@ -13,7 +13,7 @@
       "name": "Printer",
       "price": 300,
       "quantity": 100,
-      "selected": false,
+      "selected": true,
       "available": true
     },
     {
@@ -21,7 +21,7 @@
       "name": "SmartPhone nouvau s3",
       "price": "12000",
       "quantity": "1",
-      "selected": false,
+      "selected": true,
       "available": false
     },
     {
@@ -29,7 +29,7 @@
       "name": "Lenovo I9",
       "price": "8001",
       "quantity": "156",
-      "selected": true,
+      "selected": false,
       "available": true
     }
   ]

@@ -9,7 +9,7 @@ import {ActionEvent, ProductActionsTypes} from "../../../state/product.state";
 })
 export class ProductNavBarComponent implements OnInit {
 
-  @Output() productEventEmitter: EventEmitter<ActionEvent> = new EventEmitter()
+  @Output() productEventEmitter: EventEmitter<ActionEvent> = new EventEmitter<ActionEvent> ()
 
   constructor() { }
 
