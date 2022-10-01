@@ -26,11 +26,11 @@
     },
     {
       "id": 4,
-      "name": "Lenovo I8",
-      "price": "800",
-      "quantity": "15",
-      "selected": false,
-      "available": false
+      "name": "Lenovo I9",
+      "price": "8001",
+      "quantity": "156",
+      "selected": true,
+      "available": true
     }
   ]
 }
