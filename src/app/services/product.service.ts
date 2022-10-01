@@ -37,4 +37,16 @@ export class ProductService {
     return this.http.delete<void>(this.url + "/products/"+product.id)
   }
 
+  save(product:Product):Observable<Product>{
+    return this.http.post<Product>(this.url + "/products/", product)
+  }
+
+  getOneProduct(id:number):Observable<Product>{
+    return this.http.get<Product>(this.url + "/products/"+id)
+  }
+
+  UpdateProduct(product:Product):Observable<Product>{
+    return this.http.put<Product>(this.url + "/products/"+product.id, product)
+  }
+
 }

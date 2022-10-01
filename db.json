@@ -18,11 +18,19 @@
     },
     {
       "id": 3,
-      "name": "SmartPhone",
-      "price": 1200,
-      "quantity": 100,
-      "selected": true,
-      "available": true
+      "name": "SmartPhone nouvau s3",
+      "price": "12000",
+      "quantity": "1",
+      "selected": false,
+      "available": false
+    },
+    {
+      "id": 4,
+      "name": "Lenovo I8",
+      "price": "800",
+      "quantity": "15",
+      "selected": false,
+      "available": false
     }
   ]
 }
