@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from '@ngrx/store';
-import {GetAllProductAction, GetSelectedProductAction} from '../../../ngrx/products.actions';
+import {GetAllProductAction, GetSelectedProductAction, SearchProductAction} from '../../../ngrx/products.actions';
 
 @Component({
   selector: 'app-product-nav-bar',
@@ -20,5 +20,9 @@ export class ProductNavBarComponent implements OnInit {
 
   onGetSelectedProducts(): void {
     this.store.dispatch(new GetSelectedProductAction({}));
+  }
+
+  onSearch(dataForm: any): void {
+      this.store.dispatch(new SearchProductAction(dataForm.keyword));
   }
 }

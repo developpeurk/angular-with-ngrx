@@ -37,6 +37,14 @@ export function productReducers(state =  initState, action: Action): ProductsSta
       return {...state, dataState: ProductsStateEnum.LOADED, products: (action as ProductsAction).payload};
     case ProductsActionTypes.GET_SELECTED_PRODUCT_ERROR:
       return {...state, dataState: ProductsStateEnum.ERROR, errorMessage: (action as ProductsAction).payload};
+
+    /*  SEARCH PRODUCTS */
+    case ProductsActionTypes.SEARCH_PRODUCT:
+      return {...state, dataState: ProductsStateEnum.LOADING};
+    case ProductsActionTypes.SEARCH_PRODUCT_SUCCESS:
+      return {...state, dataState: ProductsStateEnum.LOADED, products: (action as ProductsAction).payload};
+    case ProductsActionTypes.SEARCH_PRODUCT_ERROR:
+      return {...state, dataState: ProductsStateEnum.ERROR, errorMessage: (action as ProductsAction).payload};
     default:
       return {...state};
   }
