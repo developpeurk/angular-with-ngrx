@@ -45,6 +45,17 @@ export function productReducers(state =  initState, action: Action): ProductsSta
       return {...state, dataState: ProductsStateEnum.LOADED, products: (action as ProductsAction).payload};
     case ProductsActionTypes.SEARCH_PRODUCT_ERROR:
       return {...state, dataState: ProductsStateEnum.ERROR, errorMessage: (action as ProductsAction).payload};
+
+    /*  SELECT / UNSELECT PRODUCTS */
+    case ProductsActionTypes.SELECT_PRODUCT:
+      return {...state, dataState: ProductsStateEnum.LOADING};
+    case ProductsActionTypes.SELECT_PRODUCT_SUCCESS:
+      const product: Product = (action as ProductsAction).payload;
+      const listProducts = [...state.products];
+      const data: Product[] = listProducts.map(p => (p.id === product.id) ? product : p);
+      return {...state, dataState: ProductsStateEnum.LOADED, products : data};
+    case ProductsActionTypes.SELECT_PRODUCT_ERROR:
+      return {...state, dataState: ProductsStateEnum.ERROR, errorMessage: (action as ProductsAction).payload};
     default:
       return {...state};
   }

@@ -16,6 +16,11 @@ export enum ProductsActionTypes{
   SEARCH_PRODUCT= '[Products] Search Products',
   SEARCH_PRODUCT_SUCCESS= '[Products] Search Products Success',
   SEARCH_PRODUCT_ERROR= '[Product] Search Products Error',
+
+  /* SELECT / UNSELECT PRODUCTS */
+  SELECT_PRODUCT= '[Products] Select Products',
+  SELECT_PRODUCT_SUCCESS= '[Products] Select Products Success',
+  SELECT_PRODUCT_ERROR= '[Product] Select Products Error',
 }
 
 /* GET ALL PRODUCT ACTION */
@@ -75,9 +80,29 @@ export class SearchProductErrorAction implements Action{
   }
 }
 
+/* SELECT / UNSELECT  PRODUCT ACTION */
+export class SelectProductAction implements Action{
+  type: ProductsActionTypes = ProductsActionTypes.SELECT_PRODUCT;
+  constructor(public payload: Product) {
+  }
+}
+
+export class SelectProductSuccessAction implements Action {
+  type: ProductsActionTypes = ProductsActionTypes.SELECT_PRODUCT_SUCCESS;
+  constructor(public payload: Product) {
+  }
+}
+
+export class SelectProductErrorAction implements Action{
+  type: ProductsActionTypes = ProductsActionTypes.SELECT_PRODUCT_ERROR;
+  constructor(public payload: string) {
+  }
+}
+
 export type ProductsAction = GetAllProductAction | GetAllProductSuccessAction |GetAllProductErrorAction |
                              GetSelectedProductAction | GetSelectedProductSuccessAction | GetSelectedProductErrorAction |
-                             SearchProductAction | SearchProductSuccessAction | SearchProductErrorAction ;
+                             SearchProductAction | SearchProductSuccessAction | SearchProductErrorAction |
+                             SelectProductAction | SelectProductSuccessAction | SelectProductErrorAction;
 
 
 
