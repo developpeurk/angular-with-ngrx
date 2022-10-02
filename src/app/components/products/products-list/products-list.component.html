@@ -9,14 +9,5 @@
     <th>Available</th>
   </tr>
   </thead>
-  <tbody>
-  <tr *ngFor="let product of stateInput.products">
-    <td>{{ product.id }}</td>
-    <td>{{ product.name }}</td>
-    <td>{{ product.price }}</td>
-    <td>{{ product.quantity }}</td>
-    <td>{{ product.selected }}</td>
-    <td>{{ product.available }}</td>
-  </tr>
-  </tbody>
+ <app-product-item [productInput]="product" *ngFor="let product of stateInput.products" style="display: contents"></app-product-item>
 </table>
