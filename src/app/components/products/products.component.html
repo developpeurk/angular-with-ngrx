@@ -10,29 +10,8 @@
     <ng-container *ngSwitchCase="productsStateEnum.ERROR">
       <div class="p-2 text-danger">{{ state.errorMessage}}</div>
     </ng-container>
-    <ng-container *ngSwitchCase="productsStateEnum.LOADED">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Selected</th>
-          <th>Available</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let product of state.products">
-          <td>{{ product.id }}</td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>{{ product.selected }}</td>
-          <td>{{ product.available }}</td>
-        </tr>
-        </tbody>
-      </table>
-    </ng-container>
+    <ng-container *ngSwitchCase="productsStateEnum.LOADED" class="p-4">
+      <app-products-list [stateInput]="state"></app-products-list>
+   </ng-container>
   </ng-container>
 </div>

@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "products-app-ngrx"
+  "defaultProject": "products-app-ngrx",
+  "cli": {
+    "analytics": "9a4226a1-db0b-4e9d-a9bf-d984ed566f71"
+  }
 }
