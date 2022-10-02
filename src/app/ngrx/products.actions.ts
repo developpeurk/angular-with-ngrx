@@ -21,7 +21,13 @@ export enum ProductsActionTypes{
   SELECT_PRODUCT= '[Products] Select Products',
   SELECT_PRODUCT_SUCCESS= '[Products] Select Products Success',
   SELECT_PRODUCT_ERROR= '[Product] Select Products Error',
+
+  /* DELETE PRODUCTS */
+  DELETE_PRODUCT= '[Product] DELETE Products',
+  DELETE_PRODUCT_SUCCESS= '[Product] DELETE Products Success',
+  DELETE_PRODUCT_ERROR= '[Product] DELETE Products Error',
 }
+
 
 /* GET ALL PRODUCT ACTION */
 export class GetAllProductAction implements Action{
@@ -87,6 +93,7 @@ export class SelectProductAction implements Action{
   }
 }
 
+
 export class SelectProductSuccessAction implements Action {
   type: ProductsActionTypes = ProductsActionTypes.SELECT_PRODUCT_SUCCESS;
   constructor(public payload: Product) {
@@ -99,10 +106,34 @@ export class SelectProductErrorAction implements Action{
   }
 }
 
+
+/* DELETE PRODUCT ACTION */
+export class DeleteProductAction implements Action{
+  type: ProductsActionTypes = ProductsActionTypes.DELETE_PRODUCT;
+  constructor(public payload: Product) {
+  }
+}
+
+export class DeleteProductSuccessAction implements Action {
+  type: ProductsActionTypes = ProductsActionTypes.DELETE_PRODUCT_SUCCESS;
+  constructor(public payload: Product) {
+  }
+}
+
+export class DeleteProductErrorAction implements Action{
+  type: ProductsActionTypes = ProductsActionTypes.DELETE_PRODUCT_ERROR;
+  constructor(public payload: string) {
+  }
+}
+
 export type ProductsAction = GetAllProductAction | GetAllProductSuccessAction |GetAllProductErrorAction |
                              GetSelectedProductAction | GetSelectedProductSuccessAction | GetSelectedProductErrorAction |
                              SearchProductAction | SearchProductSuccessAction | SearchProductErrorAction |
-                             SelectProductAction | SelectProductSuccessAction | SelectProductErrorAction;
+                             SelectProductAction | SelectProductSuccessAction | SelectProductErrorAction |
+                             DeleteProductAction | DeleteProductSuccessAction | DeleteProductErrorAction;
+
+
+
 
 
 

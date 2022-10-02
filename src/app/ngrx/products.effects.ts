@@ -3,6 +3,8 @@ import {ProductService} from '../services/product.service';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, map, mergeMap, Observable, of} from 'rxjs';
 import {
+  DeleteProductErrorAction,
+  DeleteProductSuccessAction,
   GetAllProductErrorAction,
   GetAllProductSuccessAction, GetSelectedProductErrorAction,
   GetSelectedProductSuccessAction, ProductsAction,
@@ -68,4 +70,19 @@ export class ProductsEffects {
       })
     )
   );
+
+  /* DELETE PRODUCTS */
+  DeleteProductsEffect: Observable<ProductsAction> = createEffect(
+    () => this.effectActions.pipe(
+      ofType(ProductsActionTypes.DELETE_PRODUCT),
+      mergeMap((action: ProductsAction) => {
+        return this.productService.delete(action.payload.id)
+          .pipe(
+            map(() => new DeleteProductSuccessAction(action.payload)),
+            catchError((err) => of(new DeleteProductErrorAction(err.message)))
+          );
+      })
+    )
+  );
+
 }
