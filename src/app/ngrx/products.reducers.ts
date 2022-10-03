@@ -6,7 +6,9 @@ export enum ProductsStateEnum{
   LOADING= 'Loading',
   LOADED= 'Loaded',
   ERROR= 'Error',
-  INITIAL= 'initial'
+  INITIAL= 'initial',
+  NEW= 'New',
+  EDIT= 'Edit'
 }
 
 export interface ProductsState{
@@ -37,6 +39,25 @@ export function productReducers(state =  initState, action: Action): ProductsSta
       return {...state, dataState: ProductsStateEnum.LOADED, products: (action as ProductsAction).payload};
     case ProductsActionTypes.GET_SELECTED_PRODUCT_ERROR:
       return {...state, dataState: ProductsStateEnum.ERROR, errorMessage: (action as ProductsAction).payload};
+
+    /* NEW PRODUCTS */
+    case ProductsActionTypes.NEW_PRODUCT:
+      return {...state, dataState: ProductsStateEnum.LOADING};
+    case ProductsActionTypes.NEW_PRODUCT_SUCCESS:
+      return {...state, dataState: ProductsStateEnum.NEW};
+    case ProductsActionTypes.NEW_PRODUCT_ERROR:
+      return {...state, dataState: ProductsStateEnum.ERROR, errorMessage: (action as ProductsAction).payload};
+
+    /* SAVE PRODUCTS */
+    case ProductsActionTypes.SAVE_PRODUCT:
+      return {...state, dataState: ProductsStateEnum.LOADING};
+    case ProductsActionTypes.SAVE_PRODUCT_SUCCESS:
+      const prods: Product[] = [...state.products];
+      prods.push((action as ProductsAction).payload);
+      return {...state, dataState: ProductsStateEnum.LOADED, products: prods};
+    case ProductsActionTypes.SAVE_PRODUCT_ERROR:
+      return {...state, dataState: ProductsStateEnum.ERROR, errorMessage: (action as ProductsAction).payload};
+
 
     /*  SEARCH PRODUCTS */
     case ProductsActionTypes.SEARCH_PRODUCT:

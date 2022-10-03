@@ -6,9 +6,17 @@ import {
   DeleteProductErrorAction,
   DeleteProductSuccessAction,
   GetAllProductErrorAction,
-  GetAllProductSuccessAction, GetSelectedProductErrorAction,
-  GetSelectedProductSuccessAction, ProductsAction,
-  ProductsActionTypes, SearchProductErrorAction, SearchProductSuccessAction, SelectProductErrorAction, SelectProductSuccessAction
+  GetAllProductSuccessAction,
+  GetSelectedProductErrorAction,
+  GetSelectedProductSuccessAction,
+  NewProductSuccessAction,
+  ProductsAction,
+  ProductsActionTypes,
+  SaveProductSuccessAction,
+  SearchProductErrorAction,
+  SearchProductSuccessAction,
+  SelectProductErrorAction,
+  SelectProductSuccessAction
 } from './products.actions';
 
 @Injectable()
@@ -38,6 +46,28 @@ export class ProductsEffects {
           .pipe(
             map(products => new GetSelectedProductSuccessAction(products)),
             catchError((err) => of(new GetSelectedProductErrorAction(err.message)))
+          );
+      })
+    )
+  );
+
+  /* NEW  PRODUCTS */
+  NewProductsEffect: Observable<ProductsAction> = createEffect(
+    () => this.effectActions.pipe(
+      ofType(ProductsActionTypes.NEW_PRODUCT),
+      map(() =>  new NewProductSuccessAction({}))
+    )
+  );
+
+  /* SAVE PRODUCT */
+  SaveProductsEffect: Observable<ProductsAction> = createEffect(
+    () => this.effectActions.pipe(
+      ofType(ProductsActionTypes.SAVE_PRODUCT),
+      mergeMap((action: ProductsAction) => {
+        return this.productService.save(action.payload)
+          .pipe(
+            map((product) => new SaveProductSuccessAction(product)),
+            catchError((err) => of(new DeleteProductErrorAction(err.message)))
           );
       })
     )

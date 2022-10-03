@@ -23,6 +23,27 @@
       "quantity": 32,
       "selected": true,
       "available": true
+    },
+    {
+      "name": "SmartPhone nouvau s3",
+      "price": "5000",
+      "quantity": "3",
+      "selected": true,
+      "id": 4
+    },
+    {
+      "name": "Computer lenovo i9",
+      "price": "3000",
+      "quantity": "5",
+      "selected": false,
+      "id": 5
+    },
+    {
+      "name": "Lenovo I8",
+      "price": "5555",
+      "quantity": "99",
+      "selected": true,
+      "id": 6
     }
   ]
 }

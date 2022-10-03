@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from '@ngrx/store';
 import {GetAllProductAction, GetSelectedProductAction, SearchProductAction} from '../../../ngrx/products.actions';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-nav-bar',
@@ -9,7 +10,7 @@ import {GetAllProductAction, GetSelectedProductAction, SearchProductAction} from
 })
 export class ProductNavBarComponent implements OnInit {
 
-  constructor(private store: Store<any>) { }
+  constructor(private store: Store<any>, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,5 +25,9 @@ export class ProductNavBarComponent implements OnInit {
 
   onSearch(dataForm: any): void {
       this.store.dispatch(new SearchProductAction(dataForm.keyword));
+  }
+
+  onNewProduct(): void {
+        this.router.navigateByUrl('/newProduct');
   }
 }
