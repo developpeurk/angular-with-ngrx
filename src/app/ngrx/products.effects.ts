@@ -4,19 +4,19 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, map, mergeMap, Observable, of} from 'rxjs';
 import {
   DeleteProductErrorAction,
-  DeleteProductSuccessAction,
+  DeleteProductSuccessAction, EditProductErrorAction, EditProductSuccessAction,
   GetAllProductErrorAction,
   GetAllProductSuccessAction,
   GetSelectedProductErrorAction,
   GetSelectedProductSuccessAction,
   NewProductSuccessAction,
   ProductsAction,
-  ProductsActionTypes,
+  ProductsActionTypes, SaveProductErrorAction,
   SaveProductSuccessAction,
   SearchProductErrorAction,
   SearchProductSuccessAction,
   SelectProductErrorAction,
-  SelectProductSuccessAction
+  SelectProductSuccessAction, UpdateProductErrorAction, UpdateProductSuccessAction
 } from './products.actions';
 
 @Injectable()
@@ -67,7 +67,35 @@ export class ProductsEffects {
         return this.productService.save(action.payload)
           .pipe(
             map((product) => new SaveProductSuccessAction(product)),
-            catchError((err) => of(new DeleteProductErrorAction(err.message)))
+            catchError((err) => of(new SaveProductErrorAction(err.message)))
+          );
+      })
+    )
+  );
+
+  /* EDIT PRODUCT */
+  EditProductsEffect: Observable<ProductsAction> = createEffect(
+    () => this.effectActions.pipe(
+      ofType(ProductsActionTypes.EDIT_PRODUCT),
+      mergeMap((action: ProductsAction) => {
+        return this.productService.getProductById(action.payload)
+          .pipe(
+            map((product) => new EditProductSuccessAction(product)),
+            catchError((err) => of(new EditProductErrorAction(err.message)))
+          );
+      })
+    )
+  );
+
+  /* UPDATE PRODUCT */
+  UpdateProductsEffect: Observable<ProductsAction> = createEffect(
+    () => this.effectActions.pipe(
+      ofType(ProductsActionTypes.UPDATE_PRODUCT),
+      mergeMap((action: ProductsAction) => {
+        return this.productService.update(action.payload)
+          .pipe(
+            map((product) => new UpdateProductSuccessAction(product)),
+            catchError((err) => of(new UpdateProductErrorAction(err.message)))
           );
       })
     )

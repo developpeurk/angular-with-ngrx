@@ -2,6 +2,7 @@ import {Action} from '@ngrx/store';
 import {Product} from '../model/product.model';
 
 export enum ProductsActionTypes{
+
   /* GET ALL PRODUCTS */
   GET_ALL_PRODUCT= '[Products] Get All Products',
   GET_ALL_PRODUCT_SUCCESS= '[Products] Get All Products Success',
@@ -37,8 +38,58 @@ export enum ProductsActionTypes{
   SAVE_PRODUCT_SUCCESS= '[Product] SAVE Products Success',
   SAVE_PRODUCT_ERROR= '[Product] SAVE Products Error',
 
+  /* EDIT PRODUCTS */
+  EDIT_PRODUCT= '[Product] EDIT Products',
+  EDIT_PRODUCT_SUCCESS= '[Product] EDIT Products Success',
+  EDIT_PRODUCT_ERROR= '[Product] EDIT Products Error',
+
+  /* UPDATE PRODUCTS */
+  UPDATE_PRODUCT= '[Product] update Products',
+  UPDATE_PRODUCT_SUCCESS= '[Product] update Products Success',
+  UPDATE_PRODUCT_ERROR= '[Product] update Products Error',
+
 }
 
+
+/* UPDATE PRODUCT ACTION */
+export class UpdateProductAction implements Action{
+  type: ProductsActionTypes = ProductsActionTypes.UPDATE_PRODUCT;
+
+  constructor(public payload: Product) {
+  }
+}
+
+export class UpdateProductSuccessAction implements Action {
+  type: ProductsActionTypes = ProductsActionTypes.UPDATE_PRODUCT_SUCCESS;
+  constructor(public payload: Product) {
+  }
+}
+
+export class UpdateProductErrorAction implements Action{
+  type: ProductsActionTypes = ProductsActionTypes.UPDATE_PRODUCT_ERROR;
+  constructor(public payload: string) {
+  }
+}
+
+/* EDIT PRODUCT ACTION */
+export class EditProductAction implements Action{
+  type: ProductsActionTypes = ProductsActionTypes.EDIT_PRODUCT;
+
+  constructor(public payload: number | undefined) {
+  }
+}
+
+export class EditProductSuccessAction implements Action {
+  type: ProductsActionTypes = ProductsActionTypes.EDIT_PRODUCT_SUCCESS;
+  constructor(public payload: Product) {
+  }
+}
+
+export class EditProductErrorAction implements Action{
+  type: ProductsActionTypes = ProductsActionTypes.EDIT_PRODUCT_ERROR;
+  constructor(public payload: string) {
+  }
+}
 
 /* SAVE PRODUCT ACTION */
 export class SaveProductAction implements Action{
@@ -183,7 +234,9 @@ export type ProductsAction = GetAllProductAction | GetAllProductSuccessAction |G
                              SelectProductAction | SelectProductSuccessAction | SelectProductErrorAction |
                              DeleteProductAction | DeleteProductSuccessAction | DeleteProductErrorAction |
                              NewProductAction | NewProductSuccessAction | NewProductErrorAction |
-                             SaveProductAction | SaveProductSuccessAction | SaveProductErrorAction;
+                             SaveProductAction | SaveProductSuccessAction | SaveProductErrorAction |
+                             EditProductAction | EditProductSuccessAction | EditProductErrorAction |
+                             UpdateProductAction | UpdateProductSuccessAction | UpdateProductErrorAction;
 
 
 

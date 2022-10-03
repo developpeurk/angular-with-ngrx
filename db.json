@@ -5,16 +5,16 @@
       "name": "Computer",
       "price": 60000,
       "quantity": 12,
-      "selected": true,
+      "selected": false,
       "available": true
     },
     {
       "id": 2,
       "name": "Printer",
-      "price": 1200,
-      "quantity": 10,
-      "selected": true,
-      "available": false
+      "price": "11221",
+      "quantity": "100",
+      "selected": false,
+      "available": true
     },
     {
       "id": 3,
@@ -42,7 +42,7 @@
       "name": "Lenovo I8",
       "price": "5555",
       "quantity": "99",
-      "selected": true,
+      "selected": false,
       "id": 6
     }
   ]
